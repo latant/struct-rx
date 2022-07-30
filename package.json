@@ -1,0 +1,26 @@
+{
+  "name": "struct-rx",
+  "version": "0.0.02",
+  "description": "A solution for working with structured global state in React applications.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "/dist"
+  ],
+  "scripts": {
+    "prepublish": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["react", "global", "state", "management", "reactive", "structure"],
+  "author": "Antal Latinovits",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/immutable": "^3.8.7",
+    "@types/react": "^18.0.15",
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "immutable": "^4.1.0",
+    "react": "^18.2.0"
+  }
+}
