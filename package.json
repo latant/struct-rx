@@ -1,6 +1,6 @@
 {
   "name": "struct-rx",
-  "version": "0.0.02",
+  "version": "0.0.3",
   "description": "A solution for working with structured global state in React applications.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
