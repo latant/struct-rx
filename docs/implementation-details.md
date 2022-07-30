@@ -168,3 +168,10 @@ For every node, two usage of ``Topic`` is needed:
   - The internal nodes use ``Topic`` for storing the keysets.
 
 ![](tree-diagram.png)
+
+This solution has the following advantages at the same time:
+- Powerful: It makes even the most complicated state-management problems possible to solve.
+- Type-safe: A transparent wrapper ``State<T>`` type is used.
+- Performant: The required storage and processing is proportional to the size of the relevant content.
+- Easy-to-use: data can get in and out easily and transparently.
+- Non-invasive: The wrapper type is applied recursively, direct property access can be used instead of using the ``.get`` function.
