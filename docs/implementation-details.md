@@ -169,9 +169,15 @@ For every node, two usage of ``Topic`` is needed:
 
 ![](tree-diagram.png)
 
+## Conclusion
+
 This solution has the following advantages at the same time:
 - Powerful: It makes even the most complicated state-management problems possible to solve.
 - Type-safe: A transparent wrapper ``State<T>`` type is used.
 - Performant: The required storage and processing is proportional to the size of the relevant content.
 - Easy-to-use: data can get in and out easily and transparently.
 - Non-invasive: The wrapper type is applied recursively, direct property access can be used instead of using the ``.get`` function.
+
+## Potential improvements
+
+- An efficient undo-redo system can be implemented on top of the existing solution. It could be possible to create checkpoints manually than return to them.
