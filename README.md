@@ -1,6 +1,5 @@
 # Struct RX
 [![npm version](https://badge.fury.io/js/struct-rx.svg)](https://badge.fury.io/js/struct-rx)
-A solution for working with structured global state in React applications.
 
 ## Rationale
 React users are often puzzled by problems which are easier to solve with a component-independent state construct which also respects the internal structure of the state. This library provides a dynamic, recursive data structure, with an easy-to-use, type-safe interface, which makes working with hierarchic application state a breeze.
