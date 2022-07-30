@@ -180,4 +180,4 @@ This solution has the following advantages at the same time:
 
 ## Potential improvements
 
-- An efficient undo-redo system can be implemented on top of the existing solution. It could be possible to create checkpoints manually than return to them.
+- An efficient undo-redo system can be implemented on top of the existing solution. It could be possible to create checkpoints manually then return to them.
