@@ -8,15 +8,14 @@
     "/dist"
   ],
   "scripts": {
-    "prepublish": "tsc",
-    "build": "tsc",
+    "prepublish": "tsc --build",
+    "build": "tsc --build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": ["react", "global", "state", "management", "reactive", "structure"],
   "author": "Antal Latinovits",
   "license": "ISC",
   "devDependencies": {
-    "@types/immutable": "^3.8.7",
     "@types/react": "^18.0.15",
     "typescript": "^4.7.4"
   },
