@@ -1,0 +1,20 @@
+{
+  "name": "example-todo-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/react": "^18.0.15",
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "struct-rx": "~0.0.4",
+    "react": "^18.2.0"
+  }
+}

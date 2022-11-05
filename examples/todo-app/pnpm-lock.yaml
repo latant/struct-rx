@@ -1,0 +1,7 @@
+lockfileVersion: 5.4
+
+specifiers:
+  struct-rx: ~0.0.4
+
+dependencies:
+  struct-rx: link:../../packages/struct-rx
