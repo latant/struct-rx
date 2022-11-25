@@ -1,27 +1,52 @@
 name: CI
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "main" ]
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
         with:
           fetch-depth: 2
       - name: Git config user
         uses: snow-actions/git-config-user@v1.0.0
         with:
-          name: asd # Service Account's Name
-          email: asd # Service Account's Email Address
-      - uses: actions/setup-node@v3
+          name: latant
+          email: latinovitsantal@gmail.com
+      # must be after checkout
+      - name: Cache Rush
+        id: cache-rush
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-rush
         with:
-          node-version: 16
-      - name: Verify Change Logs
-        run: node common/scripts/install-run-rush.js change --verify
-      - name: Rush Install
-        run: node common/scripts/install-run-rush.js install
-      - name: Rush rebuild
-        run: node common/scripts/install-run-rush.js rebuild --verbose --production
+          path: |
+            ./common/temp
+            */*/node_modules
+          key: ${{ runner.os }}-build-${{ env.cache-name }}
+          restore-keys: |
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.12.1
+      - name: Rush Update
+        run: node common/scripts/install-run-rush.js update
+      - name: Rush Build
+        run: node common/scripts/install-run-rush.js build
+      - name: Rush Test
+        run: node common/scripts/install-run-rush.js test
+      - name: Rush Lint
+        run: node common/scripts/install-run-rush.js lint
+      - name: Archive test and lint artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage-and-linting-reports
+          path: |
+            */*/coverage
+            */*/lint

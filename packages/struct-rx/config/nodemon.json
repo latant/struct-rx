@@ -1,0 +1,5 @@
+{
+  "watch": ["src", ".env", "config"],
+  "ext": "ts",
+  "exec": "jest --config config/jest.config.json"
+}

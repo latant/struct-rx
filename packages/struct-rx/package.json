@@ -2,25 +2,37 @@
   "name": "struct-rx",
   "version": "0.0.4",
   "description": "A solution for working with structured global state in React applications.",
+  "author": "Antal Latinovits",
+  "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "files": [
-    "/dist"
-  ],
-  "scripts": {
-    "prepublish": "tsc --build",
-    "build": "tsc --build",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "files": ["dist"],
   "keywords": ["react", "global", "state", "management", "reactive", "structure"],
-  "author": "Antal Latinovits",
-  "license": "ISC",
-  "devDependencies": {
-    "@types/react": "^18.0.15",
-    "typescript": "^4.7.4"
+  "scripts": {
+    "start": "nodemon --config config/nodemon.json",
+    "build": "tsc --project config/tsconfig.build.json",
+    "test": "(mkdirp cov && jest --config config/jest.config.json --coverage 2>&1) || (realpath cov/index.html && exit 1)",
+    "lint": "(mkdirp lint && eslint src > lint/lint.log) || (realpath lint/lint.log && exit 1)"
   },
   "dependencies": {
-    "immutable": "^4.1.0",
-    "react": "^18.2.0"
+    "immutable": "4.1.0",
+    "react": "18.2.0"
+  },
+  "devDependencies": {
+    "typescript": "4.8.4",
+    "@types/react": "18.0.25",
+    "@types/react-dom": "18.0.8",
+    "jest": "29.3.1",
+    "jest-junit": "14.0.1",
+    "ts-jest": "29.0.3",
+    "@types/jest": "29.2.3",
+    "eslint": "8.20.0",
+    "@typescript-eslint/eslint-plugin": "5.36.2",
+    "@typescript-eslint/parser": "5.36.2",
+    "prettier": "2.6.2",
+    "eslint-plugin-prettier": "4.2.1",
+    "eslint-config-prettier": "8.5.0",
+    "mkdirp": "1.0.4",
+    "fs.realpath": "1.0.0"
   }
 }

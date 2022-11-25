@@ -1,0 +1,23 @@
+{
+  "passWithNoTests": true,
+  "rootDir": "../",
+  "roots": ["<rootDir>/src"],
+  "testMatch": ["<rootDir>/src/**/*.(test|spec).{ts,tsx}"],
+  "coverageDirectory": "cov",
+  "moduleFileExtensions": ["js", "json", "ts", "node"],
+  "preset": "ts-jest",
+  "testEnvironment": "node",
+  "testPathIgnorePatterns": ["node_modules/", "dist/"],
+  "collectCoverageFrom": ["src/**/*.{ts,tsx}", "!**/node_modules/**"],
+  "modulePathIgnorePatterns": ["dist"],
+  "coverageReporters": ["html"],
+  "testTimeout": 10000,
+  "coverageThreshold": {
+    "global": {
+      "branches": 100,
+      "functions": 100,
+      "lines": 100,
+      "statements": 100
+    }
+  }
+}

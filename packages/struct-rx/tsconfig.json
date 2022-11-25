@@ -1,17 +1,20 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "module": "CommonJS",
+    "esModuleInterop": true,
+    "target": "ES2020",
     "strict": true,
-    "module": "esnext",
-    "declaration": true,
+    "noImplicitAny": true,
     "moduleResolution": "node",
-    "noImplicitAny": false,
     "allowSyntheticDefaultImports": true,
-    "jsx": "react-jsx",
-    "outDir": "./dist"
+    "skipLibCheck": true,
+    "outDir": "dist",
+    "rootDir": "src",
+    "types": ["jest"],
+    "lib": ["ES2020"],
+    "sourceMap": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx"
   },
-  "include": [
-    "src"
-  ],
+  "include": ["src/**/*"]
 }

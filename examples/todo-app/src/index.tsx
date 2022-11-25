@@ -47,12 +47,7 @@ function CreateTodo() {
 }
 
 function Input(props: { state: State<string> }) {
-  return (
-    <input
-      value={props.state.use()}
-      onChange={(e) => props.state.update(e.target.value)}
-    />
-  );
+  return <input value={props.state.use()} onChange={(e) => props.state.update(e.target.value)} />;
 }
 
 function TodoEntry(props: { state: State<Todo> }) {
@@ -64,12 +59,7 @@ function TodoEntry(props: { state: State<Todo> }) {
   return (
     <div style={{ display: "flex", margin: "10px" }}>
       <div>{title}</div>
-      <input
-        type="checkbox"
-        checked={done}
-        style={{ margin: "10px" }}
-        onChange={toggle}
-      />
+      <input type="checkbox" checked={done} style={{ margin: "10px" }} onChange={toggle} />
     </div>
   );
 }

@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-this-alias */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Im from "immutable";
 import React, { ReactElement, useEffect, useRef, useState } from "react";
 
-type Getters<T> = Readonly<
-  Omit<{ [K in SafeKey<T>]: State<SafeVal<T, K>> }, keyof IState<any>>
->;
+type Getters<T> = Readonly<Omit<{ [K in SafeKey<T>]: State<SafeVal<T, K>> }, keyof IState<any>>>;
 
 type IState<T> = {
   get<K extends SafeKey<T>>(key: K): State<SafeVal<T, K>>;
@@ -102,9 +103,7 @@ export function When<T>(props: {
 }) {
   const kind = props.state.useKind();
   const exists = kind !== "undefined";
-  const component = functionWithName("Exists", () => (
-    <>{props.children(props.state as any)}</>
-  ));
+  const component = functionWithName("Exists", () => <>{props.children(props.state as any)}</>);
   return exists === props.exists ? React.createElement(component) : null;
 }
 
@@ -116,8 +115,7 @@ export function Switch<T extends object, P extends keyof T>(props: {
     : never;
 }) {
   const [components] = useState(() => {
-    const result: { [key: string]: (props: { state: any }) => ReactElement } =
-      {};
+    const result: { [key: string]: (props: { state: any }) => ReactElement } = {};
     for (const k in props.children) {
       result[k] = functionWithName(k, ({ state }) => props.children[k](state));
     }
@@ -187,11 +185,7 @@ class Topic<T> {
     this.tryDetach();
   }
   private tryDetach() {
-    if (
-      this.detach &&
-      this.subscribers.size === 0 &&
-      this.value === undefined
-    ) {
+    if (this.detach && this.subscribers.size === 0 && this.value === undefined) {
       this.detach();
     }
   }
@@ -238,12 +232,14 @@ class Node extends Topic<Topic<any> | Branch | undefined> {
     if (x.isArray) {
       const result: any[] = [];
       x.keys.get().forEach((k) => {
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         result.push(x.nodes.get(k)!.extractValue());
       });
       return result;
     } else {
       const result: { [key: Key]: any } = {};
       x.keys.get().forEach((k) => {
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         result[k] = x.nodes.get(k)!.extractValue();
       });
       return result;
@@ -345,10 +341,7 @@ class StateRef {
   }
 }
 
-const createStateImpl: (state: StateRef) => IState<any> = implementProxy<
-  StateRef,
-  IState<any>
->(
+const createStateImpl: (state: StateRef) => IState<any> = implementProxy<StateRef, IState<any>>(
   ({ root, keys }, key) => createStateImpl(new StateRef(root, [...keys, key])),
   {
     get(key: Key): any {
@@ -432,10 +425,7 @@ const createStateImpl: (state: StateRef) => IState<any> = implementProxy<
   }
 );
 
-function implementProxy<
-  T extends object,
-  I extends { [prop: string]: (...args: any) => any }
->(
+function implementProxy<T extends object, I extends { [prop: string]: (...args: any) => any }>(
   getter: (target: T, key: keyof any) => any,
   implementation: {
     [K in keyof I]: (this: T, ...args: Parameters<I[K]>) => ReturnType<I[K]>;
@@ -452,9 +442,7 @@ function implementProxy<
 
 function isAtomicValue(value: any) {
   const t = typeof value;
-  return (
-    t === "boolean" || t === "string" || t === "number" || t === "function"
-  );
+  return t === "boolean" || t === "string" || t === "number" || t === "function";
 }
 
 function validateStateInput(value: any) {
@@ -512,10 +500,7 @@ function getStateKind(value: any): StateKind {
     : "undefined";
 }
 
-function functionWithName<F extends (...args: any[]) => any>(
-  name: string,
-  func: F
-): F {
+function functionWithName<F extends (...args: any[]) => any>(name: string, func: F): F {
   const obj = { [name]: (...args: any[]) => func(...args) };
   return obj[name] as any;
 }

@@ -1,0 +1,26 @@
+{
+  "eslint.workingDirectories": [
+    "packages/struct-rx",
+    "examples/todo-app"
+  ],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "*/*/node_modules": true,
+    "*/*/.rush": true,
+    "**/*.tsbuildinfo": true,
+    "*/*/*.build.log": true,
+    "*/*/*.build.error.log": true,
+    "*/*/junit.xml": true,
+    "*/*/lint": true,
+    "*/*/cov": true,
+    "*/*/dist": true,
+  }
+}
